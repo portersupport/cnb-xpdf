@@ -4,8 +4,12 @@ LAYERS_DIR=$1
 
 echo $LAYERS_DIR
 BP_DIR=$CNB_BUILDPACK_DIR
+
+
+
 XPDF_LAYER="${LAYERS_DIR}/xpdf"
 mkdir -p $XPDF_LAYER
+echo "build = true" >> ${XPDF_LAYER}.toml
 echo $XPDF_LAYER
 
 PROFILE_PATH="${XPDF_LAYER}/profile.d/xpdf.sh"
