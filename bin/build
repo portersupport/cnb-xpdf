@@ -1,15 +1,10 @@
 #!/bin/bash
-BUILD_DIR="."
+BUILD_DIR="/workspace"
 LAYERS_DIR=$1
-
-echo $LAYERS_DIR
 BP_DIR=$CNB_BUILDPACK_DIR
-
 XPDF_LAYER="${LAYERS_DIR}/xpdf"
 mkdir -p $XPDF_LAYER
 echo -e '[types]\ncache = true\nlaunch = true\nbuild = true' >> ${XPDF_LAYER}.toml
-echo $XPDF_LAYER
-
 PROFILE_PATH="${XPDF_LAYER}/profile.d/xpdf.sh"
 
 INSTALL_DIR=$BUILD_DIR/vendor/xpdf/
