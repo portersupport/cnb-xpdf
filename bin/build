@@ -1,5 +1,6 @@
 #!/bin/bash
 BUILD_DIR="."
+BP_DIR=$CNB_BUILDPACK_DIR
 
 INSTALL_DIR=$BUILD_DIR/vendor/xpdf/
 
@@ -8,7 +9,7 @@ XPDF_DIR=./vendor/xpdf/xpdf
 echo "Untarring xpdf.tar.gz into ${INSTALL_DIR}"
 
 mkdir -p $INSTALL_DIR
-tar -zxvf xpdf.tar.gz -C $INSTALL_DIR
+tar -zxvf $BP_DIR/xpdf.tar.gz -C $INSTALL_DIR
 
 echo "Complete!"
 
