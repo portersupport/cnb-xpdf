@@ -1,6 +1,14 @@
 #!/bin/bash
 BUILD_DIR="."
+LAYERS_DIR=$1
+
+echo $LAYERS_DIR
 BP_DIR=$CNB_BUILDPACK_DIR
+XPDF_LAYER="${LAYERS_DIR}/xpdf"
+mkdir -p $XPDF_LAYER
+echo $XPDF_LAYER
+
+PROFILE_PATH="${XPDF_LAYER}/profile.d/xpdf.sh"
 
 INSTALL_DIR=$BUILD_DIR/vendor/xpdf/
 
@@ -14,6 +22,5 @@ tar -zxvf $BP_DIR/xpdf.tar.gz -C $INSTALL_DIR
 echo "Complete!"
 
 echo "Building runtime environment for xpdf"
-mkdir -p $BUILD_DIR/.profile.d
-export PATH="$XPDF_DIR/bin64:$PATH"
-
+mkdir -p $(dirname $PROFILE_PATH)
+echo "export PATH=\"\$PATH:$XPDF_DIR/bin64\"" > $PROFILE_PATH
